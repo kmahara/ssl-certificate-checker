@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  web:
+    image: httpd:2.4
+    ports:
+      - 443:443
+    volumes:
+      - ./httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
+      - ./httpd-ssl.conf:/usr/local/apache2/conf/extra/httpd-ssl.conf:ro
+      - ./ssl/server.key:/usr/local/apache2/conf/server.key:ro
+      - ./ssl/server.crt:/usr/local/apache2/conf/server.crt:ro
+      - ./ssl/server-ca.crt:/usr/local/apache2/conf/server-ca.crt:ro
